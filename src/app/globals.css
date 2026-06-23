@@ -109,7 +109,7 @@
 /* Seção da nav com hover invertido */
 .nav-link {
   @apply text-fg font-bold text-[0.7rem] tracking-[0.12em] uppercase no-underline
-         px-4 h-16 flex items-center border-r border-fg/10
+         px-4 h-24 flex items-center border-r border-fg/10
          transition-colors duration-150;
 }
 .nav-link:hover {

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 export function Footer() {
   return (
@@ -6,9 +7,13 @@ export function Footer() {
       <div className="max-w-[1280px] mx-auto grid grid-cols-1 md:grid-cols-4 gap-0 border-b border-white/10 px-8 py-16">
         {/* Brand */}
         <div className="border-b md:border-b-0 md:border-r border-white/10 pb-8 md:pb-0 md:pr-8">
-          <div className="font-black text-2xl tracking-[-0.04em] uppercase text-white">
-            Pet<span className="text-accent">-Pag</span>
-          </div>
+          <Image
+            src="/logo-pet-pag-com.png"
+            alt="Pet-Pag"
+            width={120}
+            height={120}
+            className="h-30 w-auto brightness-0 invert"
+          />
           <p className="text-sm text-white/40 mt-4 leading-relaxed">
             O maior hub de informação e diretório de petshops do Brasil. Conectando tutores e
             profissionais pet.

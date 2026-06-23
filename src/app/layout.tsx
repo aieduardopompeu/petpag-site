@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     type: "website",
   },
   robots: { index: true, follow: true },
-  metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL ?? "https://petpag.com.br"),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL || "https://petpag.com.br"),
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

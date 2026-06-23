@@ -1,52 +1,68 @@
 import Link from "next/link";
+import Image from "next/image";
 import { auth } from "@/lib/auth";
 
 export async function Navbar() {
   const session = await auth();
 
   return (
-    <nav className="border-b-[3px] border-fg bg-white sticky top-0 z-50">
-      <div className="max-w-[1280px] mx-auto flex items-center h-16 px-8">
+    <nav className="bg-fg border-b-[3px] border-fg">
+      <div className="max-w-[1280px] mx-auto flex items-center h-28 px-8">
         {/* Logo */}
         <Link
           href="/"
-          className="font-black text-xl tracking-[-0.04em] uppercase text-fg border-r-2 border-fg pr-6 mr-6 leading-none flex-shrink-0 no-underline"
+          className="border-r border-white/10 pr-8 mr-8 flex-shrink-0 flex items-center self-stretch"
         >
-          Pet<span className="text-accent">-Pag</span>
+          <Image
+            src="/logo-pet-pag-com.png"
+            alt="Pet-Pag"
+            width={160}
+            height={160}
+            className="h-32 w-auto brightness-0 invert"
+            priority
+          />
         </Link>
 
         {/* Links */}
         <div className="hidden md:flex flex-1">
-          <Link href="/petshops" className="nav-link">Petshops</Link>
-          <Link href="/produtos" className="nav-link">Produtos</Link>
-          <Link href="/servicos" className="nav-link">Serviços</Link>
-          <Link href="/veterinarios" className="nav-link">Veterinários</Link>
-          <Link href="/blog" className="nav-link">Conteúdo</Link>
-          <Link href="/anunciar" className="nav-link border-r-0">Anunciar</Link>
+          {[
+            ["Petshops", "/petshops"],
+            ["Produtos", "/produtos"],
+            ["Serviços", "/servicos"],
+            ["Veterinários", "/veterinarios"],
+            ["Conteúdo", "/blog"],
+            ["Anunciar", "/anunciar"],
+          ].map(([label, href]) => (
+            <Link
+              key={href}
+              href={href}
+              className="text-white/60 hover:text-white transition-colors duration-150 text-[0.7rem] font-bold tracking-[0.08em] uppercase px-5 border-r border-white/10 h-28 flex items-center"
+            >
+              {label}
+            </Link>
+          ))}
         </div>
 
         {/* CTA */}
-        <div className="ml-auto flex items-center gap-0 flex-shrink-0">
+        <div className="ml-auto flex items-center flex-shrink-0">
           {session ? (
-            <>
-              <Link
-                href="/dashboard"
-                className="nav-link border-r-0 border-l-2 border-fg/10"
-              >
-                Dashboard
-              </Link>
-            </>
+            <Link
+              href="/dashboard"
+              className="text-white/60 hover:text-white transition-colors duration-150 text-[0.7rem] font-bold tracking-[0.08em] uppercase px-5 border-l border-white/10 h-28 flex items-center"
+            >
+              Dashboard
+            </Link>
           ) : (
             <>
               <Link
                 href="/login"
-                className="nav-link border-l-2 border-fg/10"
+                className="text-white/60 hover:text-white transition-colors duration-150 text-[0.7rem] font-bold tracking-[0.08em] uppercase px-5 border-l border-white/10 h-28 flex items-center"
               >
                 Entrar
               </Link>
               <Link
                 href="/petshop/novo"
-                className="bg-accent text-white font-bold text-[0.7rem] tracking-[0.1em] uppercase px-6 h-10 flex items-center transition-colors duration-150 hover:bg-fg ml-0"
+                className="bg-accent text-white font-bold text-[0.7rem] tracking-[0.1em] uppercase px-6 h-10 flex items-center transition-colors duration-150 hover:opacity-90 ml-4"
               >
                 Cadastrar Petshop
               </Link>
