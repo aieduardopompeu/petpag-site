@@ -1,0 +1,19 @@
+{
+  "framework": "nextjs",
+  "buildCommand": "npm run build",
+  "devCommand": "npm run dev",
+  "installCommand": "npm install",
+  "outputDirectory": ".next",
+  "env": [
+    "DATABASE_URL",
+    "AUTH_SECRET",
+    "AUTH_URL",
+    "RESEND_API_KEY",
+    "RESEND_FROM_EMAIL",
+    "RESEND_FROM_NAME",
+    "UPLOADTHING_SECRET",
+    "UPLOADTHING_APP_ID",
+    "NEXT_PUBLIC_APP_URL",
+    "NEXT_PUBLIC_APP_NAME"
+  ]
+}

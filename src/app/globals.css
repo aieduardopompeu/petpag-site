@@ -1,0 +1,151 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* =============================================================================
+   PET-PAG — GLOBAL STYLES
+   Design tokens definidos aqui, usados via CSS vars e classes Tailwind
+   ============================================================================= */
+
+:root {
+  --bg: #FAF9F6;
+  --fg: #0A2E3D;
+  --muted: #EFF3F4;
+  --accent: #FF5733;
+  --amber: #F5A623;
+  --teal: #0A7B7B;
+  --border: #0A2E3D;
+  --white: #FFFFFF;
+}
+
+/* =============================================================================
+   PATTERN TEXTURES
+   Aplicar via className="swiss-grid | swiss-dots | swiss-diagonal"
+   ============================================================================= */
+
+.swiss-grid {
+  background-image:
+    linear-gradient(rgba(10, 46, 61, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(10, 46, 61, 0.04) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+.swiss-dots {
+  background-image: radial-gradient(rgba(10, 46, 61, 0.06) 1.5px, transparent 1.5px);
+  background-size: 16px 16px;
+}
+
+.swiss-diagonal {
+  background-image: repeating-linear-gradient(
+    45deg,
+    rgba(10, 46, 61, 0.025) 0,
+    rgba(10, 46, 61, 0.025) 1px,
+    transparent 0,
+    transparent 50%
+  );
+  background-size: 10px 10px;
+}
+
+/* =============================================================================
+   TYPOGRAPHY UTILITIES
+   ============================================================================= */
+
+.text-display {
+  font-size: clamp(3.5rem, 7vw, 7rem);
+  font-weight: 900;
+  line-height: 0.9;
+  letter-spacing: -0.04em;
+  text-transform: uppercase;
+}
+
+.text-display-sm {
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-weight: 900;
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+}
+
+.label-sm {
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.label-xs {
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+/* =============================================================================
+   COMPONENT UTILITIES
+   ============================================================================= */
+
+/* Botão primário (coral) */
+.btn-primary {
+  @apply bg-accent text-white font-bold text-xs tracking-widest uppercase border-2 border-accent px-8 h-[52px] cursor-pointer transition-all duration-150;
+}
+.btn-primary:hover {
+  @apply bg-fg border-fg;
+}
+
+/* Botão secundário (outline escuro) */
+.btn-secondary {
+  @apply bg-transparent text-fg font-bold text-xs tracking-widest uppercase border-2 border-fg px-8 h-[52px] cursor-pointer transition-all duration-150;
+}
+.btn-secondary:hover {
+  @apply bg-fg text-white;
+}
+
+/* Card com borda */
+.card {
+  @apply bg-white border-2 border-fg;
+}
+
+/* Seção da nav com hover invertido */
+.nav-link {
+  @apply text-fg font-bold text-[0.7rem] tracking-[0.12em] uppercase no-underline
+         px-4 h-16 flex items-center border-r border-fg/10
+         transition-colors duration-150;
+}
+.nav-link:hover {
+  @apply bg-fg text-white;
+}
+
+/* Section label (01. Categorias) */
+.section-label {
+  @apply text-accent label-sm;
+}
+
+/* =============================================================================
+   SCROLLBAR (sutil, na paleta)
+   ============================================================================= */
+
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: var(--muted); }
+::-webkit-scrollbar-thumb { background: var(--fg); }
+::-webkit-scrollbar-thumb:hover { background: var(--accent); }
+
+/* =============================================================================
+   FOCUS RING
+   ============================================================================= */
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* =============================================================================
+   REDUCED MOTION
+   ============================================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
